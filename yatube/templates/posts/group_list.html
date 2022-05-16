@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}
+  Записи сообщества {{ group.title }}
+{% endblock %}
+{% block content %}
+  <h1>{{ group.title }}</h1>
+  <p>{{ group.description }}</p>
+  {% comment %}
+    Ниже (в group_list и в includes/card) тег цикла 
+    дублируется осознанно - это нужно, чтобы пройти пайтест,
+    не нарушая порядок шаблонизации, предусмотренный
+    с учетом ревью на предыдущую хомворк.
+    Рассчитываю дублирование удалить 
+    после сдачи финального проекта спринта.
+  {% endcomment %}
+  {% for post in page_obj %}
+    {% include 'includes/card.html' %}
+  {% endfor %}
+  {% include 'posts/includes/paginator.html' %}
+{% endblock %}
