@@ -334,7 +334,7 @@ class FollowViewTest(TestCase):
         self.assertEqual(posts_count, posts_count_delayed)
 
     def test_follow_unfollow(self):
-        """Test follow (within self&double follow're prohibited) and unfollow."""
+        """Test follow (within self&double follow prohibited) and unfollow."""
         author = FollowViewTest.author
         follower = FollowViewTest.follower
         follow_filtered = Follow.objects.filter(

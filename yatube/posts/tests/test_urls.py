@@ -52,7 +52,7 @@ class PostsURLTest(TestCase):
         """Test url not found in posts."""
         response = self.guest_client.get("/unexisting_page/")
         self.assertEqual(response.status_code, HTTPStatus.NOT_FOUND)
-        self.assertTemplateUsed(response, 'core/404.html')
+        self.assertTemplateUsed(response, "core/404.html")
 
     def test_url_create__edit_post(self):
         """Test creating and editing post."""
@@ -66,12 +66,14 @@ class PostsURLTest(TestCase):
                 self.assertEqual(response.status_code, HTTPStatus.OK)
 
     def test_url_redirect_post_guest(self):
-        """Test redirect non authorized creating, commenting and editing post."""
+        """Test redirect guest creating, commenting and editing post."""
         post = PostsURLTest.post
         dict_urls = {
             "/create/": "/auth/login/?next=/create/",
-            f"/posts/{post.pk}/edit/": f"/auth/login/?next=/posts/{post.pk}/edit/",
-            f"/posts/{post.pk}/comment/": f"/auth/login/?next=/posts/{post.pk}/comment/",
+            f"/posts/{post.pk}/edit/": 
+            f"/auth/login/?next=/posts/{post.pk}/edit/",
+            f"/posts/{post.pk}/comment/": 
+            f"/auth/login/?next=/posts/{post.pk}/comment/",
         }
         for url, redirect_url in dict_urls.items():
             with self.subTest(url=url):
@@ -107,8 +109,7 @@ class PostsURLTest(TestCase):
             post=post.pk,
         )
         self.assertRedirects(
-            response_comment,
-            reverse("posts:post_detail", kwargs={"post_id": post.pk})
+            response_comment, reverse("posts:post_detail", kwargs={"post_id": post.pk})
         )
 
     def test_url_redirect_post_edit_authorized(self):
