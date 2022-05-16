@@ -70,9 +70,9 @@ class PostsURLTest(TestCase):
         post = PostsURLTest.post
         dict_urls = {
             "/create/": "/auth/login/?next=/create/",
-            f"/posts/{post.pk}/edit/": 
+            f"/posts/{post.pk}/edit/":
             f"/auth/login/?next=/posts/{post.pk}/edit/",
-            f"/posts/{post.pk}/comment/": 
+            f"/posts/{post.pk}/comment/":
             f"/auth/login/?next=/posts/{post.pk}/comment/",
         }
         for url, redirect_url in dict_urls.items():
@@ -109,7 +109,8 @@ class PostsURLTest(TestCase):
             post=post.pk,
         )
         self.assertRedirects(
-            response_comment, reverse("posts:post_detail", kwargs={"post_id": post.pk})
+            response_comment,
+            reverse("posts:post_detail", kwargs={"post_id": post.pk})
         )
 
     def test_url_redirect_post_edit_authorized(self):
