@@ -209,7 +209,10 @@ class PageViewTest(TestCase):
         for url in urls_list:
             with self.subTest(url=url):
                 response = self.guest_client.get(url)
-                self.assertEqual(len(response.context["page_obj"]), POSTS_ON_PAGE)
+                self.assertEqual(
+                    len(response.context["page_obj"]),
+                    POSTS_ON_PAGE
+                )
 
     def test_paginator_second_page(self):
         """Test the amount of posts on 2nd page is correct."""
