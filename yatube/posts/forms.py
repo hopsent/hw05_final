@@ -4,9 +4,18 @@ from posts.models import Post, Comment
 
 
 class PostForm(ModelForm):
+    """
+    Shapes a form related to
+    :model:'posts.Post'.
+    """
+
     class Meta:
         model = Post
-        fields = ("text", "group", "image",)
+        fields = (
+            "text",
+            "group",
+            "image",
+        )
         labels = {
             "text": "Текст поста",
             "group": "Group",
@@ -20,6 +29,11 @@ class PostForm(ModelForm):
 
 
 class CommentForm(ModelForm):
+    """
+    Shapes a form related to
+    :model:'posts.Comment'.
+    """
+
     class Meta:
         model = Comment
         fields = ("text",)

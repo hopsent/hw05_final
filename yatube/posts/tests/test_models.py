@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.test import TestCase
 
-from ..models import AMOUNT, Group, Post
+from ..models import TEXT_LENGTH, Group, Post
 
 User = get_user_model()
 
@@ -22,11 +22,11 @@ class PostModelTest(TestCase):
         )
 
     def test_models_have_correct_object_names(self):
-        """Проверяем, что у моделей корректно работает __str__."""
+        """Test proper work of '__str__'."""
         post = PostModelTest.post
         group = PostModelTest.group
         objects_dict = {
-            f'{post.text[:AMOUNT]}': post,
+            f'{post.text[:TEXT_LENGTH]}': post,
             f'{group.title}': group,
         }
         for value, object in objects_dict.items():

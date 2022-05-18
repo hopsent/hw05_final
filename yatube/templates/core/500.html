@@ -1,5 +1,10 @@
 {% extends "base.html" %}
-{% block title %}Custom 500{% endblock %}
+{% block title %}Ошибка сервера{% endblock %}
 {% block content %}
-    <h1>Custom 500</h1>
+  <h1>Внутренняя ошибка сервера.</h1>
+  <p>Что-то произошло с сервером. Мы обязательно выясним.</p>
+  <a
+    href="{% url 'posts:index' %}">
+    Но пока Вы можете посетить главную страницу сайта
+  </a>
 {% endblock %}

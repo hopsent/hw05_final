@@ -10,12 +10,12 @@ from django.conf import settings
 
 from ..forms import PostForm
 from ..models import Follow, Group, Post
-from ..views import AMOUNT
+from ..views import POSTS_ON_PAGE
 
 
 User = get_user_model()
-TEST_AMOUNT_PAGE_2 = 3
-TEST_AMOUNT = AMOUNT + TEST_AMOUNT_PAGE_2
+TEST_POSTS_ON_PAGE_2 = 3
+TEST_POSTS_ON_PAGE = POSTS_ON_PAGE + TEST_POSTS_ON_PAGE_2
 TEST_ZERO = 0
 TEST_ONE = 1
 TEMP_MEDIA_ROOT = tempfile.mkdtemp(dir=settings.BASE_DIR)
@@ -151,7 +151,7 @@ class PageViewTest(TestCase):
             slug="test_slug",
             description="Тестовое описание",
         )
-        number_of_posts = TEST_AMOUNT
+        number_of_posts = TEST_POSTS_ON_PAGE
         for post_num in range(number_of_posts):
             Post.objects.create(
                 author=cls.user,
@@ -209,7 +209,7 @@ class PageViewTest(TestCase):
         for url in urls_list:
             with self.subTest(url=url):
                 response = self.guest_client.get(url)
-                self.assertEqual(len(response.context["page_obj"]), AMOUNT)
+                self.assertEqual(len(response.context["page_obj"]), POSTS_ON_PAGE)
 
     def test_paginator_second_page(self):
         """Test the amount of posts on 2nd page is correct."""
@@ -226,7 +226,7 @@ class PageViewTest(TestCase):
             with self.subTest(url=url):
                 response = self.guest_client.get(url + "?page=2")
                 self.assertEqual(
-                    len(response.context["page_obj"]), TEST_AMOUNT_PAGE_2)
+                    len(response.context["page_obj"]), TEST_POSTS_ON_PAGE_2)
 
 
 class GroupViewTest(TestCase):

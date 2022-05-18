@@ -1,5 +1,9 @@
 {% extends "base.html" %}
-{% block title %}Custom CSRF check error{% endblock %}
+{% block title %}Ошибка доступа{% endblock %}
 {% block content %}
-  <h1>Custom CSRF check error. 403</h1>
+  <h1>В доступе отказано!</h1>
+  <a
+    href="{% url 'posts:index' %}">
+    Вы можете посетить главную страницу сайта
+  </a>
 {% endblock %}

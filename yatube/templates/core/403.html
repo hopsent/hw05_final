@@ -1,5 +1,10 @@
 {% extends "base.html" %}
-{% block title %}Custom 403{% endblock %}
+{% block title %}Ошибка доступа{% endblock %}
 {% block content %}
-    <h1>Custom 403</h1>
+  <h1>Извините,</h1>
+  <p>в доступе отказано.</p>
+  <a
+    href="{% url 'posts:index' %}">
+    Вы можете посетить главную страницу сайта
+  </a>
 {% endblock %}
