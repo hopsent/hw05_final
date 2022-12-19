@@ -27,7 +27,6 @@ python3 -m pip install --upgrade pip
 ```
 pip install -r requirements.txt
 ```
-``` 
 - in the manage.py directory to complete migrations use:
 ```
 python3 manage.py migrate
